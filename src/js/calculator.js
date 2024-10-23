@@ -66,8 +66,8 @@ get action from setAction
 params action:number
 */
 function doAction(action = null) {
-    if (LCD.currentNumber.val().length < 1) return alert('you didnt input number');
-    if (process.action === '') return alert('your action is blank'); //this code return nothing if true else execute code below
+    if (LCD.currentNumber.val().length < 1) return alert('you didnt fill the input number !');
+    if (process.action === '') return alert('your didnt select action for operation!'); //this code return nothing if true else execute code below
 
     let result = 0;
     process.nextNum = parseFloat(LCD.currentNumber.val());
