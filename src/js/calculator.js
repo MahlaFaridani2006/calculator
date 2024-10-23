@@ -5,6 +5,7 @@ const LCD = {
     currentNumber: $('#show-number'),
     action: $('#show-action'),
     btnNum: $('#nums button'),
+    cal: $('#calculator')
 }
 /* process data*/
 const process = {
@@ -65,8 +66,8 @@ get action from setAction
 params action:number
 */
 function doAction(action = null) {
-    if (LCD.currentNumber.val().length < 1) return alert('you didnt fill the input number!');
-    if (process.action === '') return alert('your didnt select action') ; //this code return nothing if true else execute code below
+    if (LCD.currentNumber.val().length < 1) return alert('you didnt input number');
+    if (process.action === '') return alert('your action is blank'); //this code return nothing if true else execute code below
 
     let result = 0;
     process.nextNum = parseFloat(LCD.currentNumber.val());
@@ -110,6 +111,32 @@ LCD.btnNum.on('click', function () {
 })
 
 /*able to get number without focus*/
-$("body").on("keydown", function () {
+/*$("body").on("keydown", function () {
     $("#show-number[name='show-num']").focus();
+});*/
+
+
+/*get keyboard actions */
+LCD.cal.on('mouseover', function () {
+    $(document).bind('keydown', function (e) {
+
+        const numberCode = {
+            keyNum: LCD.cal.find(`#nums button[code=${e.keyCode}]`),
+            keyAction: LCD.cal.find(`#operation button[action-code=${e.keyCode}]`),
+            keyEqual: LCD.cal.find(`button[equal-code=${e.keyCode}]`),
+            keyClearAll: LCD.cal.find(`button[clear-all=${e.keyCode}]`),
+            keyClear: LCD.cal.find(`button[clear=${e.keyCode}]`),
+        }
+        numberCode.keyNum.trigger('click');
+        numberCode.keyAction.trigger('click');
+        numberCode.keyEqual.trigger('click');
+        numberCode.keyClear.trigger('click');
+
+        if (e.shiftKey !== false) {
+            numberCode.keyClearAll.trigger('click');
+        }
+    })
+
+}).on("mouseout", function () {
+    $(document).unbind("keydown");
 });
