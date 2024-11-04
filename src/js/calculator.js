@@ -119,7 +119,7 @@ LCD.btnNum.on('click', function () {
 /*get keyboard actions */
 LCD.cal.on('mouseover', function () {
     $(document).bind('keydown', function (e) {
-
+console.log(e.keyCode)
         const numberCode = {
             keyNum: LCD.cal.find(`#nums button[code=${e.keyCode}]`),
             keyAction: LCD.cal.find(`#operation button[action-code=${e.keyCode}]`),
