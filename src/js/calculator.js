@@ -30,7 +30,7 @@ function doClear(isAll = false) {
     } else {
         process.nextNum = 0;
         process.result = 0;
-        LCD.history.append('<hr/>');
+        LCD.history.append('<hr>');
     }
 
 }
@@ -41,7 +41,15 @@ get action from user
 * params action must be one of '* - / +'
 */
 function setAction(action) {
+
+    if (LCD.currentNumber.val().length < 1) {
+        alert('you didnt fill the input number !');
+        addShadow(LCD.currentNumber);
+        return;
+    }
+
     LCD.action.text(action);
+
     if (process.action !== '') {
         /*change getNum() place for do not take time to run and do not skip  */
         doAction(action);
@@ -54,7 +62,6 @@ function setAction(action) {
             process.result = process.history;
         }
         process.action = action;
-
     }
     LCD.currentNumber.val('');
 
@@ -80,7 +87,6 @@ function doAction(action = null) {
     } else {
         doClear();
     }
-
 
 }
 
@@ -110,33 +116,33 @@ LCD.btnNum.on('click', function () {
     LCD.currentNumber.val(LCD.currentNumber.val() + number);
 })
 
-/*able to get number without focus*/
-/*$("body").on("keydown", function () {
-    $("#show-number[name='show-num']").focus();
-});*/
-
 
 /*get keyboard actions */
 LCD.cal.on('mouseover', function () {
     $(document).bind('keydown', function (e) {
-console.log(e.keyCode)
-        const numberCode = {
-            keyNum: LCD.cal.find(`#nums button[code=${e.keyCode}]`),
-            keyAction: LCD.cal.find(`#operation button[action-code=${e.keyCode}]`),
-            keyEqual: LCD.cal.find(`button[equal-code=${e.keyCode}]`),
-            keyClearAll: LCD.cal.find(`button[clear-all=${e.keyCode}]`),
-            keyClear: LCD.cal.find(`button[clear=${e.keyCode}]`),
-        }
-        numberCode.keyNum.trigger('click');
-        numberCode.keyAction.trigger('click');
-        numberCode.keyEqual.trigger('click');
-        numberCode.keyClear.trigger('click');
+            if (e.shiftKey !== false) {
 
-        if (e.shiftKey !== false) {
-            numberCode.keyClearAll.trigger('click');
-        }
-    })
+                addShadow(LCD.cal.find(`[all-clear*=${e.keyCode}]`).trigger('click'))
 
+            } else {
+
+                let target = LCD.cal.find(`[code*=${e.keyCode}]`);
+                target.length > 0 && target.trigger('click')
+                addShadow(target)
+
+            }
+
+
+        }
+    )/*when mouse out do not looking for keydown action */
 }).on("mouseout", function () {
     $(document).unbind("keydown");
 });
+
+/*show box shadow when click from user keyboard */
+function addShadow(item) {
+    item.addClass('shadow');
+    setTimeout(function () {
+        item.removeClass('shadow');
+    }, 300)
+}
