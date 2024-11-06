@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Mahla Faridani</title>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="icon" href="favicon.ico"/>
 </head>
 <body>
 <div id="calculator">
@@ -13,32 +14,32 @@
             <input type="number" id="show-number" name="show-num"/>
             <div id="show-action"></div>
 
-            <button id="equal" onclick="doAction()" equal-code="13">=</button>
+            <button id="equal" onclick="doAction()" code="13">=</button>
         </div>
     </div>
     <div id="btns">
         <div id="nums">
 
-            <button id="num7" code="103">7</button>
-            <button id="num8" code="104">8</button>
-            <button id="num9" code="105">9</button>
-            <button id="num4" code="100">4</button>
-            <button id="num5" code="101">5</button>
-            <button id="num6" code="102">6</button>
-            <button id="num1" code="97">1</button>
-            <button id="num2" code="98">2</button>
-            <button id="num3" code="99">3</button>
-            <button id="num0" code="96">0</button>
-            <button id="clear" class="calculator-clear" onclick="doClear(0)" clear="67">C</button>
-            <button id="clear-all" class="calculator-clear" onclick="doClear(1)" clear-all="67">CC</button>
+            <button id="num7" code="103 55">7</button>
+            <button id="num8" code="104 56">8</button>
+            <button id="num9" code="105 57">9</button>
+            <button id="num4" code="100 52">4</button>
+            <button id="num5" code="101 53">5</button>
+            <button id="num6" code="102 54">6</button>
+            <button id="num1" code="97 49">1</button>
+            <button id="num2" code="98 50">2</button>
+            <button id="num3" code="99 51">3</button>
+            <button id="num0" code="96 48">0</button>
+            <button id="clear" class="calculator-clear" onclick="doClear(0)" code="67">C</button>
+            <button id="clear-all" class="calculator-clear" onclick="doClear(1)" all-clear="67">CC</button>
 
         </div>
 
         <div id="operation">
-            <button id="add" onclick="setAction('+')" action-code="107">+</button>
-            <button id="minus" onclick="setAction('-')" action-code="109">-</button>
-            <button id="divide" onclick="setAction('/')" action-code="111">/</button>
-            <button id="multiple" onclick="setAction('*')" action-code="106">*</button>
+            <button id="add" onclick="setAction('+')" code="107">+</button>
+            <button id="minus" onclick="setAction('-')" code="109">-</button>
+            <button id="divide" onclick="setAction('/')" code="111">/</button>
+            <button id="multiple" onclick="setAction('*')" code="106">*</button>
         </div>
     </div>
 </div>
