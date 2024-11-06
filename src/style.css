@@ -9,38 +9,38 @@
 
 #calculator {
     width: 350px;
-    height: 510px;
+    height: 580px;
     background-color: var(--bg);
     border-radius: 8px;
-    margin: 100px auto;
+    margin: 50px auto;
     padding: 10px;
 }
 
 #LCD {
     width: 90%;
-    height: 190px;
+    height: 280px;
     display: flex;
     flex-direction: column;
     margin: 10px auto;
-    line-height: 80px;
     text-align: center;
     font-size: 24px;
+    line-height: 29px;
 
 }
 
 #history {
-    margin: 5px auto;
+    margin: 10px 5px;
     width: 100%;
-    height: 110px;
+    height: 190px;
     background-color: var(--bg-LCD);
     border-radius: 8px;
-    overflow-y: scroll;
-
+    overflow-y: auto;
+    box-sizing: content-box;
 }
 
 #current {
     width: 100%;
-    height: 70px;
+    height: 90px;
     display: flex;
     border-radius: 8px;
     align-items: center;
@@ -59,6 +59,7 @@
     height: 70px;
     background-color: var(--bg-LCD);
     margin: 0 5px;
+    line-height: 70px;
 }
 
 
@@ -125,4 +126,12 @@ input::-webkit-inner-spin-button {
 input {
     font-size: larger;
     border-radius: 5px;
+}
+
+.shadow {
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+hr {
+    margin: 4px 0;
 }
